@@ -9,19 +9,19 @@ public class DragScript : MonoBehaviour
 
     void Start()
     {
-        speedModifier = 0.001f;
+        speedModifier = 0.0001f;
     }
 
 
     void Update()
     {
-        if (Input.touchCount > 0) {
+        if (Input.touchCount == 1) {
             touch = Input.GetTouch(0);
 
             if (touch.phase == TouchPhase.Moved) {
                 transform.position = new Vector3(transform.position.x + touch.deltaPosition.x * speedModifier, 
                 transform.position.y, 
-                transform.position.z + touch.deltaPosition.y + speedModifier);
+                transform.position.z + touch.deltaPosition.y * speedModifier);
             }
         }
     }
