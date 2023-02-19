@@ -10,7 +10,9 @@ public class ARTapToPlace : MonoBehaviour
     // private ARSessionOrigin arOrigin;
     public GameObject placementIndicator;
     public GameObject[] objects;
-    public GameObject objectToPlace;
+
+    public GameObject[] indicators;
+    // public GameObject objectToPlace;
 
     private ARRaycastManager arRaycastManager;
 
@@ -44,6 +46,12 @@ public class ARTapToPlace : MonoBehaviour
     public void PlaceObject(int id)
     {
         Instantiate(objects[id], placementPose.position, placementPose.rotation);
+    }
+
+    public void PlaceColour(int id)
+    {
+        Vector3 temp = new Vector3(placementPose.position.x, placementPose.position.y+0.05f, placementPose.position.z);
+        Instantiate(indicators[id], temp, placementPose.rotation);
     }
 
     private void UpdatePlacementPose()

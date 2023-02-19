@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5530207610535686505
+--- !u!1 &2958030259611999765
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5530207610535686504}
-  - component: {fileID: 5530207610535686509}
-  - component: {fileID: 5530207610535686506}
-  - component: {fileID: 5530207610535686507}
+  - component: {fileID: 2682849005899817983}
+  - component: {fileID: 6393789548267458641}
+  - component: {fileID: 7295310144091198315}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: papers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5530207610535686504
+--- !u!4 &2682849005899817983
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5530207610535686505}
-  m_LocalRotation: {x: -0, y: -0, z: -0.3429953, w: 0.93933713}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_GameObject: {fileID: 2958030259611999765}
+  m_LocalRotation: {x: 0.47135946, y: -0.8764418, z: -0.09266802, w: 0.032906264}
+  m_LocalPosition: {x: -0.0024175644, y: 0.05, z: -0.004082799}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5530207612546783004}
+  m_Father: {fileID: 9170563135529120308}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -40.119}
---- !u!33 &5530207610535686509
+  m_LocalEulerAnglesHint: {x: -7.551, y: -171.587, z: -57.1}
+--- !u!33 &6393789548267458641
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5530207610535686505}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &5530207610535686506
+  m_GameObject: {fileID: 2958030259611999765}
+  m_Mesh: {fileID: 997602262961349003, guid: 1515779a63525c84da105fc2d4959e4c, type: 3}
+--- !u!23 &7295310144091198315
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5530207610535686505}
+  m_GameObject: {fileID: 2958030259611999765}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -62,7 +61,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f77adddcc7fb4094eb3eda0604130def, type: 2}
+  - {fileID: 2100000, guid: e2c3a27853a719342955b7c9709e9459, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,21 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &5530207610535686507
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5530207610535686505}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &5530207612546783005
+--- !u!1 &8363098991355832462
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,27 +92,27 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5530207612546783004}
+  - component: {fileID: 9170563135529120308}
   m_Layer: 0
-  m_Name: Pill
+  m_Name: paper 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5530207612546783004
+--- !u!4 &9170563135529120308
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5530207612546783005}
+  m_GameObject: {fileID: 8363098991355832462}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.99588144, y: 1.064, z: 1.0082983}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 5530207610535686504}
+  - {fileID: 2682849005899817983}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
