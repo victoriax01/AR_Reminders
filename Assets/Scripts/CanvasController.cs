@@ -21,7 +21,7 @@ public class CanvasController : MonoBehaviour
             }
             else
             {   
-                if (child.gameObject.name == "TeaButton" || child.gameObject.name == "PillButton" || child.gameObject.name == "AlertButton" || child.gameObject.name == "TogglePatientView")
+                if (child.gameObject.name == "TeaButton" || child.gameObject.name == "PillButton" || child.gameObject.name == "AlertButton" || child.gameObject.name == "TogglePatientView" || child.gameObject.name == "ClearAllButton")
                 {
                     childObjects.Add(child.gameObject);
                     child.gameObject.SetActive(false);

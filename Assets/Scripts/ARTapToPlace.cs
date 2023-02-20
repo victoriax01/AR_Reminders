@@ -21,9 +21,14 @@ public class ARTapToPlace : MonoBehaviour
     private bool bedPlaced = false;
     private Pose bedPose;
 
+    private List<int> onBed;
+
+    private List<GameObject> placedObjects;
+
     void Start()
     {
-        // arOrigin = FindObjectOfType<ARSessionOrigin>();
+        onBed = new List<int>();
+        placedObjects = new List<GameObject>();
         arRaycastManager = FindObjectOfType<ARRaycastManager>();
     }
 
@@ -45,13 +50,21 @@ public class ARTapToPlace : MonoBehaviour
 
     public void PlaceObject(int id)
     {
-        Instantiate(objects[id], placementPose.position, placementPose.rotation);
+        placedObjects.Add(Instantiate(objects[id], placementPose.position, placementPose.rotation));
     }
 
     public void PlaceColour(int id)
     {
         Vector3 temp = new Vector3(placementPose.position.x, placementPose.position.y+0.05f, placementPose.position.z);
-        Instantiate(indicators[id], temp, placementPose.rotation);
+        placedObjects.Add(Instantiate(indicators[id], temp, placementPose.rotation));
+    }
+
+    public void DestroyAllObjects()
+    {
+        foreach (GameObject obj in placedObjects)
+        {
+            Destroy(obj);
+        }
     }
 
     public void PlaceBed()
@@ -62,8 +75,24 @@ public class ARTapToPlace : MonoBehaviour
 
     public void PlaceObjectOnBed(int id)
     {
-        Vector3 addedRandomness = new Vector3(bedPose.position.x + UnityEngine.Random.Range(-0.3f, 0.3f), bedPose.position.y + UnityEngine.Random.Range(0f, 0.3f), bedPose.position.z + UnityEngine.Random.Range(-0.3f, 0.3f));
-        Instantiate(objects[id], addedRandomness, bedPose.rotation);
+        if (!onBed.Contains(id))
+        {
+            Vector3 objectPos = bedPose.position;
+            switch(onBed.Count)
+            {
+                case 0:
+                // Vector3 addedRandomness = new Vector3(bedPose.position.x + UnityEngine.Random.Range(-0.3f, 0.3f), bedPose.position.y + UnityEngine.Random.Range(0f, 0.3f), bedPose.position.z + UnityEngine.Random.Range(-0.3f, 0.3f));
+                    objectPos.x -= 0.1f;
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    objectPos.x += 0.1f;
+                    break;
+            }
+            onBed.Add(id);
+            Instantiate(objects[id], objectPos, bedPose.rotation);
+        }
     }
 
     private void UpdatePlacementPose()
