@@ -18,8 +18,8 @@ public class ARTapToPlace : MonoBehaviour
 
     private Pose placementPose;
     private bool placementPoseIsValid = false;
-
-    // private List<GameObject>;
+    private bool bedPlaced = false;
+    private Pose bedPose;
 
     void Start()
     {
@@ -52,6 +52,18 @@ public class ARTapToPlace : MonoBehaviour
     {
         Vector3 temp = new Vector3(placementPose.position.x, placementPose.position.y+0.05f, placementPose.position.z);
         Instantiate(indicators[id], temp, placementPose.rotation);
+    }
+
+    public void PlaceBed()
+    {
+        bedPlaced = true;
+        bedPose = placementPose;
+    }
+
+    public void PlaceObjectOnBed(int id)
+    {
+        Vector3 addedRandomness = new Vector3(bedPose.position.x + UnityEngine.Random.Range(-0.3f, 0.3f), bedPose.position.y + UnityEngine.Random.Range(0f, 0.3f), bedPose.position.z + UnityEngine.Random.Range(-0.3f, 0.3f));
+        Instantiate(objects[id], addedRandomness, bedPose.rotation);
     }
 
     private void UpdatePlacementPose()

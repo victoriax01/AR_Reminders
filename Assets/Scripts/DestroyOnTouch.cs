@@ -15,4 +15,9 @@ public class DestroyOnTouch : MonoBehaviour
     {
         
     }
+
+    public void destroyObject()
+    {
+        Destroy(transform.gameObject);
+    }
 }

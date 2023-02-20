@@ -10,7 +10,7 @@ public class UrgencyButtonController : MonoBehaviour
     private bool buttonsShowing = false;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         placeObject = GameObject.Find("PlaceObject");
         Transform[] allChildren = GetComponentsInChildren<Transform>(includeInactive: true);
