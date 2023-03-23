@@ -21,7 +21,7 @@ public class CanvasController : MonoBehaviour
             }
             else
             {   
-                if (child.gameObject.name == "TeaButton" || child.gameObject.name == "PillButton" || child.gameObject.name == "AlertButton" || child.gameObject.name == "TogglePatientView" || child.gameObject.name == "ClearAllButton")
+                if (child.gameObject.name == "Scroll-Snap" || child.gameObject.name == "TogglePatientView" || child.gameObject.name == "ClearAllButton")
                 {
                     childObjects.Add(child.gameObject);
                     child.gameObject.SetActive(false);
@@ -31,44 +31,7 @@ public class CanvasController : MonoBehaviour
                     childObjects.Add(child.gameObject);
                     child.gameObject.SetActive(true);
                 }
-
-                else if (child.gameObject.name == "Panel" || 
-                child.gameObject.name == "Water" || 
-                child.gameObject.name == "Meds" || 
-                child.gameObject.name == "Toilet" ||
-                child.gameObject.name == "RequestButton1" || 
-                child.gameObject.name == "RequestButton2" || 
-                child.gameObject.name == "RequestButton3")
-                {
-                    patientViewObjects.Add(child.gameObject);
-                    child.gameObject.SetActive(false);
-                }
             }
-        }
-        // Debug.Log(childObjects.Count);
-    }
-
-    public void togglePatientView()
-    {
-        if (patientView)
-        {
-            ShowOtherButtons();
-            patientViewToggle(false);
-        }
-        else
-        {
-            HideAllButtonsExceptPatient();
-            patientViewToggle(true);
-
-        }
-        patientView = !patientView;
-    }
-
-    private void patientViewToggle(bool toggle)
-    {
-        foreach (GameObject childObj in patientViewObjects)
-        {
-            childObj.SetActive(toggle);
         }
     }
     public void ShowOtherButtons()

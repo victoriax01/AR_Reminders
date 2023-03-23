@@ -28,7 +28,6 @@ public class PatientViewCanvasController : MonoBehaviour
                 child.gameObject.SetActive(false);
             }           
         }
-        Debug.Log(childObjects.Count);
     }
 
     public void ToggleView()

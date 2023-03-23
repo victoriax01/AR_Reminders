@@ -48,15 +48,17 @@ public class ARTapToPlace : MonoBehaviour
     //     Debug.Log(objectToPlace);
     // }
 
-    public void PlaceObject(int id)
-    {
-        placedObjects.Add(Instantiate(objects[id], placementPose.position, placementPose.rotation));
-    }
 
-    public void PlaceColour(int id)
+    public void PlaceObject(int objId, int urgencyId, string text)
     {
+        GameObject obj = Instantiate(objects[objId], placementPose.position, placementPose.rotation);
         Vector3 temp = new Vector3(placementPose.position.x, placementPose.position.y+0.05f, placementPose.position.z);
-        placedObjects.Add(Instantiate(indicators[id], temp, placementPose.rotation));
+        if (urgencyId != -1)
+        {
+            GameObject urgencyIndicator = Instantiate(indicators[urgencyId], temp, placementPose.rotation);
+            urgencyIndicator.transform.parent = obj.transform;
+        }
+        placedObjects.Add(obj);
     }
 
     public void DestroyAllObjects()

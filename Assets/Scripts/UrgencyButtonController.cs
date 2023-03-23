@@ -1,86 +1,110 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UrgencyButtonController : MonoBehaviour
 {
-    public GameObject placeObject;
-    List<GameObject> childObjects = new List<GameObject>();
-    public int buttonID; // 0: tea, 1: pill, 2: paper
-    private bool buttonsShowing = false;
+    public GameObject ReminderMenu;
+    private ReminderMenuController ReminderMenuScript;
+    private GameObject redButton;
+    private GameObject yellowButton;
+    private GameObject greenButton;
+    private Color red = new Color(255, 37, 0, 255);
+    private Color yellow = new Color(255, 238, 0, 255);
+    private Color green = new Color(49, 241, 0, 255);
+    private Color red_t = new Color(255, 37, 0, 130);
+    private Color yellow_t = new Color(255, 238, 0, 130);
+    private Color green_t = new Color(49, 241, 0, 130);
 
-    // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
-        placeObject = GameObject.Find("PlaceObject");
+        ReminderMenuScript = ReminderMenu.GetComponent<ReminderMenuController>();
+
         Transform[] allChildren = GetComponentsInChildren<Transform>(includeInactive: true);
-        bool first = true;
         foreach (Transform child in allChildren)
         {
-            if (first)
+            if (child.gameObject.name == "RedButton")
             {
-                first = false;
+                redButton = child.gameObject;
             }
-            else
-            {   
-                child.gameObject.SetActive(false);
-                childObjects.Add(child.gameObject);
+            else if (child.gameObject.name == "YellowButton")
+            {
+                yellowButton = child.gameObject;
+                
+            }
+            else if (child.gameObject.name == "GreenButton")
+            {
+                greenButton = child.gameObject;
             }
         }
     }
 
-    public void ToggleButtons(int buttonId)
+    private void UnselectButton(GameObject button)
     {
-        if (buttonID != buttonId)
-        {
-            buttonID = buttonId;
-            ShowButtons();
-        }
-        else
-        {
-            if (buttonsShowing)
-            {
-                HideButtons();
-            }
-            else
-            {
-                ShowButtons();
-            }
-        }
-    }
-    public void ShowButtons()
-    {
-        buttonsShowing = true;
-        foreach (GameObject obj in childObjects)
-        {
-            obj.SetActive(true);
-        }
+        Color buttonC = button.GetComponent<Graphic>().color;
+        Color newCol = new Color(buttonC.r, buttonC.g, buttonC.b, 0.5f);
+        button.GetComponent<Graphic>().color = newCol;
     }
 
-    public void HideButtons()
+    public void UnselectAllButtons()
     {
-        buttonsShowing = false;
-        foreach (GameObject obj in childObjects)
-        {
-            obj.SetActive(false);
-        }
+        ReminderMenuScript.urgencyId = -1;
+        Color red = redButton.GetComponent<Graphic>().color;
+        Color newCol = new Color(red.r, red.g, red.b, 0.5f);
+        redButton.GetComponent<Graphic>().color = newCol;
+
+        Color yellow = yellowButton.GetComponent<Graphic>().color;
+        newCol = new Color(yellow.r, yellow.g, yellow.b, 0.5f);
+        yellowButton.GetComponent<Graphic>().color = newCol;
+
+        Color green = greenButton.GetComponent<Graphic>().color;
+        newCol = new Color(green.r, green.g, green.b, 0.5f);
+        greenButton.GetComponent<Graphic>().color = newCol;
+    }
+
+    private void SelectButton(GameObject button, int id)
+    {
+        UnselectAllButtons();
+        Color buttonC = button.GetComponent<Graphic>().color;
+        Color newCol = new Color(buttonC.r, buttonC.g, buttonC.b, 1f);
+        button.GetComponent<Graphic>().color = newCol;
+        ReminderMenuScript.urgencyId = id;
     }
 
     public void RedButton()
     {
-        placeObject.GetComponent<ARTapToPlace>().PlaceObject(buttonID);
-        placeObject.GetComponent<ARTapToPlace>().PlaceColour(0);
+        if (ReminderMenuScript.urgencyId != 0)
+        {
+            SelectButton(redButton, 0);
+        }
+        else
+        {
+            UnselectAllButtons();
+        }
     }
 
     public void YellowButton()
     {
-        placeObject.GetComponent<ARTapToPlace>().PlaceObject(buttonID);
-        placeObject.GetComponent<ARTapToPlace>().PlaceColour(1);
+        if (ReminderMenuScript.urgencyId != 1)
+        {
+            SelectButton(yellowButton, 1);
+        }
+        else
+        {
+            UnselectAllButtons();
+        }
     }
 
     public void GreenButton()
     {
-        placeObject.GetComponent<ARTapToPlace>().PlaceObject(buttonID);
-        placeObject.GetComponent<ARTapToPlace>().PlaceColour(2);
+        if (ReminderMenuScript.urgencyId != 2)
+        {
+            SelectButton(greenButton, 2);
+        }
+        else
+        {
+            UnselectAllButtons();
+        }
     }
 }
