@@ -56,6 +56,7 @@ public class ReminderMenuController : MonoBehaviour
 
     public void HideView()
     {
+        inputFieldObject.GetComponent<TMP_InputField>().text = "";
         foreach (GameObject childObj in childObjects)
         {
             if (childObj.name == "UrgencyButtons")

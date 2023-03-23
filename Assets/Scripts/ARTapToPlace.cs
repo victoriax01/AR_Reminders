@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using System;
+using TMPro;
 
 public class ARTapToPlace : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class ARTapToPlace : MonoBehaviour
     public GameObject[] objects;
 
     public GameObject[] indicators;
+    public GameObject textPrefab;
     // public GameObject objectToPlace;
 
     private ARRaycastManager arRaycastManager;
@@ -57,6 +59,15 @@ public class ARTapToPlace : MonoBehaviour
         {
             GameObject urgencyIndicator = Instantiate(indicators[urgencyId], temp, placementPose.rotation);
             urgencyIndicator.transform.parent = obj.transform;
+        }
+        if (text != "")
+        {
+            temp = new Vector3(placementPose.position.x, placementPose.position.y+0.12f, placementPose.position.z);
+            GameObject textObj = Instantiate(textPrefab);
+            textObj.GetComponent<RectTransform>().position = temp;
+            textObj.GetComponent<RectTransform>().rotation = placementPose.rotation;
+            textObj.GetComponent<TMP_Text>().text = text;
+            textObj.transform.parent = obj.transform;
         }
         placedObjects.Add(obj);
     }

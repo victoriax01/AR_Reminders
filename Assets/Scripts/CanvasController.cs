@@ -33,6 +33,7 @@ public class CanvasController : MonoBehaviour
                 }
             }
         }
+        ShowOtherButtons();
     }
     public void ShowOtherButtons()
     {
