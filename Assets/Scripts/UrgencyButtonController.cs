@@ -5,17 +5,14 @@ using UnityEngine.UI;
 
 public class UrgencyButtonController : MonoBehaviour
 {
+    /*
+    Script attached to 'UrgencyButtons' which is the parent object of the 3 colour indicator buttons which allow users to add colours to their reminders
+    */
     public GameObject ReminderMenu;
     private ReminderMenuController ReminderMenuScript;
     private GameObject redButton;
     private GameObject yellowButton;
     private GameObject greenButton;
-    private Color red = new Color(255, 37, 0, 255);
-    private Color yellow = new Color(255, 238, 0, 255);
-    private Color green = new Color(49, 241, 0, 255);
-    private Color red_t = new Color(255, 37, 0, 130);
-    private Color yellow_t = new Color(255, 238, 0, 130);
-    private Color green_t = new Color(49, 241, 0, 130);
 
     void Start()
     {
@@ -42,6 +39,7 @@ public class UrgencyButtonController : MonoBehaviour
 
     private void UnselectButton(GameObject button)
     {
+        // make button transparent again to indicate it is unselected
         Color buttonC = button.GetComponent<Graphic>().color;
         Color newCol = new Color(buttonC.r, buttonC.g, buttonC.b, 0.5f);
         button.GetComponent<Graphic>().color = newCol;
@@ -49,7 +47,9 @@ public class UrgencyButtonController : MonoBehaviour
 
     public void UnselectAllButtons()
     {
-        ReminderMenuScript.urgencyId = -1;
+        ReminderMenuScript.urgencyId = -1; // set urgencyID back to -1 so no colours are selected
+
+        // set all buttons to transparent to indicate none are selected
         Color red = redButton.GetComponent<Graphic>().color;
         Color newCol = new Color(red.r, red.g, red.b, 0.5f);
         redButton.GetComponent<Graphic>().color = newCol;
@@ -65,15 +65,19 @@ public class UrgencyButtonController : MonoBehaviour
 
     private void SelectButton(GameObject button, int id)
     {
-        UnselectAllButtons();
+        UnselectAllButtons(); // ensure no other buttons are selected
+
+        // change the transparency of the button to 1 so it is fully opaque
         Color buttonC = button.GetComponent<Graphic>().color;
         Color newCol = new Color(buttonC.r, buttonC.g, buttonC.b, 1f);
         button.GetComponent<Graphic>().color = newCol;
-        ReminderMenuScript.urgencyId = id;
+
+        ReminderMenuScript.urgencyId = id; // set urgencyId to correct ID
     }
 
     public void RedButton()
     {
+        // called when the red colour button is pressed
         if (ReminderMenuScript.urgencyId != 0)
         {
             SelectButton(redButton, 0);
@@ -86,6 +90,7 @@ public class UrgencyButtonController : MonoBehaviour
 
     public void YellowButton()
     {
+        // called when the yellow colour button is pressed
         if (ReminderMenuScript.urgencyId != 1)
         {
             SelectButton(yellowButton, 1);
@@ -98,6 +103,7 @@ public class UrgencyButtonController : MonoBehaviour
 
     public void GreenButton()
     {
+        // called when the green colour button is pressed
         if (ReminderMenuScript.urgencyId != 2)
         {
             SelectButton(greenButton, 2);

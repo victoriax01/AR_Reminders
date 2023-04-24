@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Pulse : MonoBehaviour
 {
+    // WORK IN PROGRESS script to pulse the colour indicators on reminders, however this script was never finished
+
     // private Material m;
     MeshRenderer meshRenderer;
     [SerializeField]

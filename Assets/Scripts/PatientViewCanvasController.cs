@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class PatientViewCanvasController : MonoBehaviour
 {
+    /*
+    Script attached to "PatientView" which is an empty GameObject that is a parent to all UI elements shown on the Patient View
+    
+    NOTE: Patient View object was disabled on final implementation due to it being implemented in the first place to demonstrate what the patients might see
+    */
     List<GameObject> childObjects = new List<GameObject>();
     private bool patientView = false;
-
-    // Start is called before the first frame update
     void Start()
     {
         Transform[] allChildren = GetComponentsInChildren<Transform>();
@@ -32,6 +35,7 @@ public class PatientViewCanvasController : MonoBehaviour
 
     public void ToggleView()
     {
+        // called when Toggle Patient View button is pressed, switches currently active and inactive objects around
         if (patientView)
         {
             foreach (GameObject childObj in childObjects)
@@ -47,11 +51,5 @@ public class PatientViewCanvasController : MonoBehaviour
             }
         }
         patientView = !patientView;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
