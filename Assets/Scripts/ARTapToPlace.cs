@@ -39,17 +39,7 @@ public class ARTapToPlace : MonoBehaviour
     {
         UpdatePlacementPose();
         UpdatePlacementIndicator();
-
-        // if (placementPoseIsValid && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) {
-        //     PlaceObject();
-        // }
     }
-
-    // public void ChangeObject(int id) {
-    //     objectToPlace = objects[id];
-    //     Debug.Log(objectToPlace);
-    // }
-
 
     public void PlaceObject(int objId, int urgencyId, string text)
     {
@@ -94,7 +84,6 @@ public class ARTapToPlace : MonoBehaviour
             switch(onBed.Count)
             {
                 case 0:
-                // Vector3 addedRandomness = new Vector3(bedPose.position.x + UnityEngine.Random.Range(-0.3f, 0.3f), bedPose.position.y + UnityEngine.Random.Range(0f, 0.3f), bedPose.position.z + UnityEngine.Random.Range(-0.3f, 0.3f));
                     objectPos.x -= 0.1f;
                     break;
                 case 1:
